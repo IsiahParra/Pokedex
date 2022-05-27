@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class NetworkController {
     //MARK: PROPERTIES
@@ -39,6 +40,19 @@ class NetworkController {
 
        }.resume()
     }
-}
+    static func fetchImage(pokemon: Pokemon, completion: @escaping (UIImage?) -> Void) {
+        guard let imageURL = URL(string: pokemon.spritePath ) else {return}
+        URLSession.shared.dataTask(with: imageURL) { data, _, error in
+            if let error = error {
+                print("There was an error fetching the data the url is \(baseURLString) the error is", error.localizedDescription)
+                completion(nil)
+            }
+            guard let data = data else {return}
+            let pokemonImage = UIImage(data: data)
+            completion(pokemonImage)
+        }.resume()
+    }
+  
+} // end of class
 
 
