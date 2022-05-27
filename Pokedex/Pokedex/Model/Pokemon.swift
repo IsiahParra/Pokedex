@@ -48,7 +48,7 @@ extension Pokemon {
             
             moves.append(moveName)
         }
-        self.init(name: name, id: id, moves:moves, spritePosterPath: spritePosterPath)
+        self.init(name: name, id: id, moves: moves, spritePosterPath: spritePosterPath)
     }
 }
 

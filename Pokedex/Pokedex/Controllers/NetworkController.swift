@@ -17,10 +17,10 @@ class NetworkController {
         guard let baseURL = URL(string: baseURLString) else {completion(nil)
             return
         }
-       let searchPokeonURL = baseURL.appendingPathComponent("pokemon/\(searchTerms.lowercased())")
-        print(searchPokeonURL)
+       let searchPokemonURL = baseURL.appendingPathComponent("pokemon/\(searchTerms.lowercased())")
+        print(searchPokemonURL)
         
-       URLSession.shared.dataTask(with: baseURL) { taskData, _, error in
+       URLSession.shared.dataTask(with: searchPokemonURL) { taskData, _, error in
            if let error = error {
                print("There was an error fetching the data. the url is \(baseURL) the error is", error.localizedDescription)
                completion(nil)
